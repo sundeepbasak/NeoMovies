@@ -1,5 +1,5 @@
-# NeoMovies
-### Demo Link : 
+# NeoMovies - movie application
+### Demo Link : https://neo-movies.netlify.app/
 
 Created using: 
 - React
