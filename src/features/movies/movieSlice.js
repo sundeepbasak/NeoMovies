@@ -1,15 +1,16 @@
 //import createSlice func
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import movieApi from "../../common/api/movieApi";
+import { APIKEY } from "../../common/api/apiKey";
 
-// console.log(process.env);
+// console.log(process.env.REACT_APP_API_KEY); //apikey
 
 //generates pending, fulfilled, and rejected action types
 export const fetchAsyncMovies = createAsyncThunk(
   "movies/fetchAsyncMovies",
   async (searchText) => {
     const response = await movieApi.get(
-      `?apiKey=${process.env.REACT_APP_API_KEY}&s=${searchText}&type=movie`
+      `?apiKey=${APIKEY}&s=${searchText}&type=movie`
     );
     return response.data;
   }
@@ -19,7 +20,7 @@ export const fetchAsyncShows = createAsyncThunk(
   "movies/fetchAsyncShows",
   async (searchText) => {
     const response = await movieApi.get(
-      `?apiKey=${process.env.REACT_APP_API_KEY}&s=${searchText}&type=series`
+      `?apiKey=${APIKEY}&s=${searchText}&type=series`
     );
     return response.data;
   }
@@ -28,9 +29,7 @@ export const fetchAsyncShows = createAsyncThunk(
 export const fetchAsyncMovieOrShowDetail = createAsyncThunk(
   "movies/fetchAsyncMovieOrShowDetail",
   async (id) => {
-    const response = await movieApi.get(
-      `?apiKey=${process.env.REACT_APP_API_KEY}&i=${id}&Plot=full`
-    );
+    const response = await movieApi.get(`?apiKey=${APIKEY}&i=${id}&Plot=full`);
     return response.data;
   }
 );
